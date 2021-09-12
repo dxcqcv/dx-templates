@@ -1,14 +1,33 @@
 ﻿import * as path from 'path'
 import * as webpack from 'webpack'
-// import 'webpack-dev-server'
-// import WebpackDevServer from 'webpack-dev-server'
+import { appSrc, appHtml, appDist} from './paths'
+import {CleanWebpackPlugin} from 'clean-webpack-plugin'
+import * as CopyWebpackPlugin from 'copy-webpack-plugin'
+import * as HtmlWebpackPlugin from 'html-webpack-plugin'
+import * as PrettierPlugin from 'prettier-webpack-plugin'
+import * as ESLintPlugin from 'eslint-webpack-plugin'
 
+console.log('check appSrc', appSrc)
 const config: webpack.Configuration = {
-	mode: 'production',
-	entry: path.resolve(__dirname, '../app/src/index.js') ,
+	entry: [`${appSrc}/index.js`] ,
 	output: {
-		path: path.resolve(__dirname, '../app/dist'),
-		filename: 'foo.bundle.js'
+		path: appDist ,
+		filename: '[name].bundle.js'
+	},
+	module: {
+		rules:[
+			{
+				test: /\.(js|ts|jsx|tsx)$/,
+				exclude: /node_modules/,
+				use: {
+					loader: 'esbuild-loader',
+					options: {
+						loader:'tsx',
+						target:'es5'
+					}
+				}
+			}
+		]
 	}
 }
 
