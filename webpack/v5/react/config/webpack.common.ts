@@ -1,7 +1,7 @@
 ﻿import * as path from 'path'
 import * as webpack from 'webpack'
-import 'webpack-dev-server'
-import WebpackDevServer from 'webpack-dev-server'
+// import 'webpack-dev-server'
+// import WebpackDevServer from 'webpack-dev-server'
 
 const config: webpack.Configuration = {
 	mode: 'production',
