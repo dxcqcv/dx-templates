@@ -1,3 +1,4 @@
 ﻿{
-	"types": ["node"]
+	"types": ["node"],
+	"exclude": ["config/webpack/*"]
 }
