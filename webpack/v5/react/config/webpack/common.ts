@@ -1,5 +1,4 @@
-﻿import * as webpack from 'webpack'
-import { appSrc, appHtml, appDist, appPublic } from '../paths'
+﻿import { appSrc, appHtml, appDist, appPublic } from '../paths'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import  CopyWebpackPlugin from 'copy-webpack-plugin'
 import HtmlWebpackPlugin  from 'html-webpack-plugin'
@@ -7,8 +6,16 @@ import HtmlWebpackPlugin  from 'html-webpack-plugin'
 import  ESLintPlugin from 'eslint-webpack-plugin'
 import  ProgressBarPlugin  from 'progress-bar-webpack-plugin'
 import chalk  from 'chalk'
+import { Configuration as WebpackConfiguration } from "webpack";
+import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
 
-const config: webpack.Configuration = {
+// fix devServer ts err
+interface Configuration extends WebpackConfiguration  {
+	devServer?: WebpackDevServerConfiguration 
+}
+
+
+const config: Configuration = {
 	entry: [`${appSrc}/index.js`],
 	output: {
 		path: appDist,
