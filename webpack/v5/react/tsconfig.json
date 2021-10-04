@@ -1,4 +1,18 @@
 ﻿{
-	"types": ["node"],
-	"exclude": ["config/webpack/*"]
+	"compilerOptions": {
+		"outDir": "./dist/",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+		"paths": {
+			"@/*": ["app/src/*"]
+		},
+		"allowJs": true,
+		"baseUrl": "./",
+	},
+	"exclude": ["config/webpack/*", "node_modules", "app/dist", "app/log", "spec"]
 }

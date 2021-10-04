@@ -33,7 +33,7 @@ const config =  merge(
 							loader: 'css-loader',
 							options: {sourceMap: true, importLoaders: 2, modules: true}
 						},
-						{loader: 'postcss-loader', options:{sourceMap: true}},
+						{loader: 'postcss-loader'},
 						{loader: 'sass-loader', options:{sourceMap: true}}
 					]
 				}

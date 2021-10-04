@@ -16,7 +16,7 @@ interface Configuration extends WebpackConfiguration  {
 
 
 const config: Configuration = {
-	entry: [`${appSrc}/index.js`],
+	entry: [`${appSrc}/index.ts`],
 	output: {
 		path: appDist,
 		filename: '[name].bundle.js'
@@ -25,15 +25,9 @@ const config: Configuration = {
 		rules: [
 			{
 				test: /\.(ts|tsx|js|jsx)$/,
-				exclude: /node_modules/,
-				use: {
-					loader: 'esbuild-loader',
-					options: {
-						loader: 'tsx',
-						target: 'es5'
-					}
-				}
-			},
+        use: "babel-loader",
+        exclude: /node_modules/,
+      },
 			// Images: Copy image files to build folder
 			{ test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource' },
 			// Fonts and SVGs: Inline files
