@@ -1,9 +1,8 @@
-﻿import "core-js/stable";
-import "regenerator-runtime/runtime";
+﻿import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
-
-import '@/global/styles.scss'
-import {Component} from '@/components/components'
+import '@/global/styles.scss';
+import { Component } from '@/components/components';
 
 // test comments
 /**
@@ -12,5 +11,5 @@ import {Component} from '@/components/components'
 /**
  * 测试长注释
  */
-const component = new Component()
-component.hello()
+const component = new Component();
+component.hello();

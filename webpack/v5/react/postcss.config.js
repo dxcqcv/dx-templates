@@ -1,8 +1,8 @@
 ﻿module.exports = {
-	sourceMap:true,
+  sourceMap: true,
   plugins: [
     [
-      "postcss-preset-env",
+      'postcss-preset-env',
       {
         // Options
       },

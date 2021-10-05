@@ -1,47 +1,46 @@
-﻿import { appSrc, appHtml, appDist, appPublic } from '../paths'
-import { CleanWebpackPlugin } from 'clean-webpack-plugin'
-import  CopyWebpackPlugin from 'copy-webpack-plugin'
-import HtmlWebpackPlugin  from 'html-webpack-plugin'
+﻿import { appSrc, appHtml, appDist, appPublic } from '../paths';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 // import * as PrettierPlugin from 'prettier-webpack-plugin'
-import  ESLintPlugin from 'eslint-webpack-plugin'
-import  ProgressBarPlugin  from 'progress-bar-webpack-plugin'
-import chalk  from 'chalk'
-import { Configuration as WebpackConfiguration } from "webpack";
-import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
+import ESLintPlugin from 'eslint-webpack-plugin';
+import ProgressBarPlugin from 'progress-bar-webpack-plugin';
+import chalk from 'chalk';
+import { Configuration as WebpackConfiguration } from 'webpack';
+import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
 
 // fix devServer ts err
-interface Configuration extends WebpackConfiguration  {
-	devServer?: WebpackDevServerConfiguration 
+interface Configuration extends WebpackConfiguration {
+  devServer?: WebpackDevServerConfiguration;
 }
 
-
 const config: Configuration = {
-	entry: [`${appSrc}/index.ts`],
-	output: {
-		path: appDist,
-		filename: '[name].bundle.js'
-	},
-	module: {
-		rules: [
-			{
-				test: /\.(ts|tsx|js|jsx)$/,
-        use: "babel-loader",
+  entry: [`${appSrc}/index.ts`],
+  output: {
+    path: appDist,
+    filename: '[name].bundle.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx|js|jsx)$/,
+        use: 'babel-loader',
         exclude: /node_modules/,
       },
-			// Images: Copy image files to build folder
-			{ test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource' },
-			// Fonts and SVGs: Inline files
-			{ test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
-		]
-	},
-	plugins: [
-		   // Removes/cleans build folders and unused assets when rebuilding
+      // Images: Copy image files to build folder
+      { test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource' },
+      // Fonts and SVGs: Inline files
+      { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
+    ],
+  },
+  plugins: [
+    // Removes/cleans build folders and unused assets when rebuilding
     new CleanWebpackPlugin(),
-		    // Copies files from target to destination folder
+    // Copies files from target to destination folder
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: appPublic ,
+          from: appPublic,
           to: 'assets',
           globOptions: {
             ignore: ['*.DS_Store'],
@@ -52,28 +51,28 @@ const config: Configuration = {
     }),
     new HtmlWebpackPlugin({
       title: 'webpack react',
-      favicon: `${appSrc}/images/favicon.ico` ,
+      favicon: `${appSrc}/images/favicon.ico`,
       template: appHtml, // template file
       filename: 'index.html', // output file
     }),
     new ESLintPlugin({
-			extensions: ['.tsx', '.ts', '.js'],
-      exclude: 'node_modules'
+      extensions: ['.tsx', '.ts', '.js'],
+      exclude: 'node_modules',
     }),
     new ProgressBarPlugin({
-			format: `  :msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`
+      format: `  :msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`,
     }),
-	],
-	resolve: {
-		modules: [appSrc, 'node_modules'],
-		extensions: ['.tsx', '.jsx', '.ts', '.js'],
-		alias: {
-			'@': appSrc,
-		},
-	},
-	cache: {
-    type: 'filesystem', 
+  ],
+  resolve: {
+    modules: [appSrc, 'node_modules'],
+    extensions: ['.tsx', '.jsx', '.ts', '.js'],
+    alias: {
+      '@': appSrc,
+    },
   },
-}
+  cache: {
+    type: 'filesystem',
+  },
+};
 
-export default config
+export default config;
