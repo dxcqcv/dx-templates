@@ -23,6 +23,7 @@
     "iOS 8",
     "Android > 5"
   ],
+  "sideEffects": false,
   "keywords": [],
   "author": "Roy Shang",
   "license": "ISC",
@@ -72,15 +73,29 @@
     "sass-loader": "^12.1.0",
     "speed-measure-webpack-plugin": "^1.5.0",
     "style-loader": "^3.3.0",
+    "terser-webpack-plugin": "^5.2.4",
     "ts-jest": "^27.0.5",
     "ts-node": "^10.2.1",
     "tsconfig-paths": "^3.11.0",
     "typescript": "^4.3.5",
     "webpack": "^5.44.0",
+    "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/react": "^17.0.27",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-loadable": "^5.5.6",
+    "@types/react-router-dom": "^5.3.0",
+    "axios": "^0.22.0",
+    "react": "^17.0.2",
+    "react-css-modules": "^4.7.11",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-loadable": "^5.5.0",
+    "react-router-dom": "^5.3.0",
     "sass": "^1.42.1"
   }
 }

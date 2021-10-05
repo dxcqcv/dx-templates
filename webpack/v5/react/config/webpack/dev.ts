@@ -3,12 +3,13 @@ import { merge } from 'webpack-merge';
 import common from './common';
 import { appDist } from '../paths';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
-// import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 // measure loader time
+// make HMR bug
 const smp = new SpeedMeasurePlugin();
 
-const isNeedSpeed = true;
+const isNeedSpeed = false;
 
 const config = merge(common, {
   mode: 'development',
@@ -19,6 +20,8 @@ const config = merge(common, {
     hot: true,
     port: 8866,
   },
+  // to fix webpack hmr bug
+  target: 'web',
   module: {
     rules: [
       // Styles: Inject css into the head with source maps
@@ -40,6 +43,7 @@ const config = merge(common, {
   plugins: [
     // Only update what has changed on hot reload
     new webpack.HotModuleReplacementPlugin(),
+    new ReactRefreshWebpackPlugin(),
   ],
 });
 export default isNeedSpeed ? smp.wrap(config) : config;

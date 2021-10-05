@@ -15,7 +15,7 @@ interface Configuration extends WebpackConfiguration {
 }
 
 const config: Configuration = {
-  entry: [`${appSrc}/index.ts`],
+  entry: [`${appSrc}/index.tsx`],
   output: {
     path: appDist,
     filename: '[name].bundle.js',
