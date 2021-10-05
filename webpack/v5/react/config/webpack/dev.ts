@@ -3,7 +3,7 @@ import { merge } from 'webpack-merge';
 import common from './common';
 import { appDist } from '../paths';
 import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
+// import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 
 // measure loader time
 const smp = new SpeedMeasurePlugin();

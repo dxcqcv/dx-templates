@@ -1,4 +1,4 @@
-﻿import { appSrc, appHtml, appDist, appPublic } from '../paths';
+﻿import { appSrc, appHtml, appDist, appPublic, nodeModules } from '../paths';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -25,7 +25,7 @@ const config: Configuration = {
       {
         test: /\.(ts|tsx|js|jsx)$/,
         use: 'babel-loader',
-        exclude: /node_modules/,
+        exclude: nodeModules,
       },
       // Images: Copy image files to build folder
       { test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource' },
@@ -33,6 +33,7 @@ const config: Configuration = {
       { test: /\.(woff(2)?|eot|ttf|otf|svg|)$/, type: 'asset/inline' },
     ],
   },
+
   plugins: [
     // Removes/cleans build folders and unused assets when rebuilding
     new CleanWebpackPlugin(),
@@ -64,7 +65,7 @@ const config: Configuration = {
     }),
   ],
   resolve: {
-    modules: [appSrc, 'node_modules'],
+    modules: [appSrc, nodeModules],
     extensions: ['.tsx', '.jsx', '.ts', '.js'],
     alias: {
       '@': appSrc,
