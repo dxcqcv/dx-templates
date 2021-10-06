@@ -23,7 +23,6 @@
     "iOS 8",
     "Android > 5"
   ],
-  "sideEffects": false,
   "keywords": [],
   "author": "Roy Shang",
   "license": "ISC",
