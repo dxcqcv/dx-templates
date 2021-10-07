@@ -1,0 +1,12 @@
+﻿h1 {
+  color: red;
+  font-size: 26px;
+
+  &:hover {
+    color: blue;
+  }
+}
+
+.test {
+  color: aqua;
+}
