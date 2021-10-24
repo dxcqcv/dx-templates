@@ -5,3 +5,4 @@ app/dist
 .history
 yarn-error.log
 yarn.lock
+doc

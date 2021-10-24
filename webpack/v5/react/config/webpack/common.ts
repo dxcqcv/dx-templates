@@ -65,7 +65,11 @@ const config: Configuration = {
     }),
   ],
   resolve: {
-    modules: [appSrc, nodeModules],
+    /**
+     * bugs:Can't resolve 'ansi-html'
+     * https://github.com/webpack/webpack-dev-server/issues/1969
+     */
+    modules: [appSrc, 'node_modules'],
     extensions: ['.tsx', '.jsx', '.ts', '.js'],
     alias: {
       '@': appSrc,

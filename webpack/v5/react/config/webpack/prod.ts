@@ -13,7 +13,7 @@ export default merge(common, {
   devtool: false,
   output: {
     path: appDist,
-    publicPath: '/',
+    // publicPath: '/',
     filename: 'js/[name].[contenthash].bundle.js',
   },
   module: {
